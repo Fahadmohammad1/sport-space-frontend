@@ -30,7 +30,7 @@ const HowItWorks = () => {
             <time className="font-mono italic">step 1</time>
             <div className="text-lg font-black">Select a Sport Facility</div>
             <div className="flex justify-center">
-              <img className="" src={facility} alt="calender" />
+              <img className="w-1/2" src={facility} alt="calender" />
             </div>
           </div>
           <hr />
@@ -57,7 +57,7 @@ const HowItWorks = () => {
               Check availablity using date
             </div>
             <div className="flex justify-center">
-              <img className="" src={onlineCalender} alt="calender" />
+              <img className="w-1/2" src={onlineCalender} alt="calender" />
             </div>
           </div>
           <hr />
@@ -82,7 +82,7 @@ const HowItWorks = () => {
             <time className="font-mono italic">step 3</time>
             <div className="text-lg font-black">Select time slot</div>
             <div className="flex justify-center">
-              <img className="" src={time} alt="calender" />
+              <img className="w-1/2" src={time} alt="calender" />
             </div>
           </div>
           <hr />
@@ -109,7 +109,7 @@ const HowItWorks = () => {
               Provide neccessary information for booking
             </div>
             <div className="flex justify-center">
-              <img className="" src={form} alt="calender" />
+              <img className="w-1/2" src={form} alt="calender" />
             </div>
           </div>
           <hr />
@@ -134,7 +134,7 @@ const HowItWorks = () => {
             <time className="font-mono italic">step 5</time>
             <div className="text-lg font-black">Complete payment</div>
             <div className="flex justify-center">
-              <img className="" src={payment} alt="calender" />
+              <img className="w-1/2" src={payment} alt="calender" />
             </div>
           </div>
         </li>
