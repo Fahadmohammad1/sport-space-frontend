@@ -7,9 +7,6 @@ import payment from "../../assets/Payment.png";
 const HowItWorks = () => {
   return (
     <section className="mt-12 px-5 lg:px-0">
-      <h3 className="text-center lg:text-3xl text-xl font-bold">
-        How it works
-      </h3>
       <ul className="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
         <li>
           <div className="timeline-middle">

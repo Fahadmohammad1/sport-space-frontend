@@ -1,5 +1,4 @@
 const FacilityCard = ({ facility }) => {
-  console.log(facility);
   return (
     <div className="card bg-base-100 lg:w-96 shadow-xl mx-auto">
       <figure className="px-5 pt-5">

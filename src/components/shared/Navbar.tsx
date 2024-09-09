@@ -1,7 +1,17 @@
+import { Link, useLocation } from "react-router-dom";
+
 const Navbar = () => {
+  const { pathname } = useLocation();
+
   return (
     <section className="lg:flex justify-center">
-      <div className="navbar fixed lg:mt-5 bg-base-300 container lg:rounded-lg z-30">
+      <div
+        className={
+          pathname === "/"
+            ? "navbar fixed lg:mt-5 bg-base-300 container lg:rounded-lg z-30"
+            : "navbar bg-base-300 z-30"
+        }
+      >
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -25,7 +35,7 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
             >
               <li>
-                <a>Facilities</a>
+                <Link to="/facilities">Facilities</Link>
               </li>
               <li>
                 <a>About us</a>
@@ -35,15 +45,15 @@ const Navbar = () => {
               </li>
             </ul>
           </div>
-          <p className="btn btn-ghost text-xl">
+          <Link to="/" className="btn btn-ghost text-xl">
             <span className="text-ss-primary">S</span>port
             <span className="text-ss-primary">S</span>pace
-          </p>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Facilities</a>
+              <Link to="/facilities">Facilities</Link>
             </li>
             <li>
               <a>About us</a>
