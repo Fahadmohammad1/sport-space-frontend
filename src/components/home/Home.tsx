@@ -1,6 +1,7 @@
 import Banner from "./Banner";
 import FeaturedFacilities from "./FeaturedFacilities";
 import HowItWorks from "./HowItWorks";
+import Services from "./Services";
 import Testimonials from "./Testimonials";
 
 const Home = () => {
@@ -11,6 +12,7 @@ const Home = () => {
         <FeaturedFacilities />
         <HowItWorks />
         <Testimonials />
+        <Services />
       </div>
     </section>
   );
