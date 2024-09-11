@@ -64,9 +64,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn bg-gradient-to-r from-ss-primary to-ss-secondary text-white">
+          <Link
+            to="/login"
+            className="btn bg-gradient-to-r from-ss-primary to-ss-secondary text-white"
+          >
             Login
-          </a>
+          </Link>
         </div>
       </div>
     </section>
