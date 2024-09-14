@@ -11,9 +11,13 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    console.log(data);
+    reset();
+  };
   return (
     <section>
       <div className="w-full h-screen flex">
@@ -41,10 +45,10 @@ const Login = () => {
                 className="grow"
                 placeholder="Email"
               />
-              {errors?.email && (
-                <span className="text-red-500">{errors.email.message}</span>
-              )}
             </label>
+            {errors?.email && (
+              <p className="text-red-500 text-start">{errors.email.message}</p>
+            )}
 
             <label className="input input-bordered flex items-center gap-2 mb-3">
               <svg
@@ -63,10 +67,14 @@ const Login = () => {
                 {...register("password", { required: "Password is required" })}
                 type="password"
                 className="grow"
-                value="password"
+                placeholder="Password"
               />
-              {errors.password && <span>{errors.password.message}</span>}
             </label>
+            {errors?.password && (
+              <p className="text-red-500 text-start">
+                {errors.password.message}
+              </p>
+            )}
             <button className="btn border-none btn-sm bg-gradient-to-r from-ss-primary to-ss-secondary text-black uppercase">
               Login
             </button>
