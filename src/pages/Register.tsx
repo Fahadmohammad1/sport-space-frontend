@@ -11,6 +11,7 @@ type Inputs = {
 };
 
 const Register = () => {
+  let confirmPassError = null;
   const {
     register,
     handleSubmit,
@@ -19,6 +20,9 @@ const Register = () => {
   } = useForm<Inputs>();
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
+    if (data.password !== data.confirmPassword) {
+      confirmPassError = "Password does not match";
+    }
     console.log(data);
     reset();
   };
@@ -185,10 +189,13 @@ const Register = () => {
                 placeholder="Confirm Password"
               />
             </label>
-            {errors?.password && (
+            {errors?.confirmPassword && (
               <p className="text-red-500 text-start">
-                {errors.password.message}
+                {errors.confirmPassword.message}
               </p>
+            )}
+            {confirmPassError && (
+              <p className="text-red-500 text-start">{confirmPassError}</p>
             )}
             <button className="btn border-none btn-sm bg-gradient-to-r from-ss-primary to-ss-secondary text-black uppercase">
               Register
