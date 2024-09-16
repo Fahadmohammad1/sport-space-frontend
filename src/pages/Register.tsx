@@ -11,20 +11,20 @@ type Inputs = {
 };
 
 const Register = () => {
-  let confirmPassError = null;
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
     reset,
   } = useForm<Inputs>();
 
+  const password = watch("password", "");
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    if (data.password !== data.confirmPassword) {
-      confirmPassError = "Password does not match";
-    }
-    console.log(data);
     reset();
+
+    console.log(data);
   };
   return (
     <section>
@@ -36,6 +36,7 @@ const Register = () => {
         />
         <div className="bg-white flex flex-col justify-center items-center w-1/2 shadow-lg">
           <h1 className="text-3xl font-bold text-ss-primary mb-2">Register</h1>
+
           <form onSubmit={handleSubmit(onSubmit)} className="w-1/2 text-center">
             {/*name */}
             <label className="input input-bordered flex items-center gap-2 mb-3">
@@ -46,21 +47,21 @@ const Register = () => {
                 className="size-4 opacity-70"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
 
               <input
-                {...register("email", { required: "Email is required" })}
+                {...register("name", { required: "Name is required" })}
                 type="text"
                 className="grow"
                 placeholder="Name"
               />
             </label>
-            {errors?.email && (
-              <p className="text-red-500 text-start">{errors.email.message}</p>
+            {errors?.name && (
+              <p className="text-red-500 text-start">{errors.name.message}</p>
             )}
 
             {/*address */}
@@ -72,9 +73,9 @@ const Register = () => {
                 className="size-4 opacity-70"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M7.5 6a4.5 4.5 0 1 1 9 0 4.5 4.5 0 0 1-9 0ZM3.751 20.105a8.25 8.25 0 0 1 16.498 0 .75.75 0 0 1-.437.695A18.683 18.683 0 0 1 12 22.5c-2.786 0-5.433-.608-7.812-1.7a.75.75 0 0 1-.437-.695Z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
 
@@ -122,9 +123,9 @@ const Register = () => {
                 className="size-4 opacity-70"
               >
                 <path
-                  fill-rule="evenodd"
+                  fillRule="evenodd"
                   d="M1.5 4.5a3 3 0 0 1 3-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 0 1-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 0 0 6.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 0 1 1.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 0 1-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5Z"
-                  clip-rule="evenodd"
+                  clipRule="evenodd"
                 />
               </svg>
 
@@ -183,6 +184,8 @@ const Register = () => {
               <input
                 {...register("confirmPassword", {
                   required: "Confirm Password is required",
+                  validate: (value) =>
+                    value === password || "Password dot not match",
                 })}
                 type="password"
                 className="grow"
@@ -194,9 +197,7 @@ const Register = () => {
                 {errors.confirmPassword.message}
               </p>
             )}
-            {confirmPassError && (
-              <p className="text-red-500 text-start">{confirmPassError}</p>
-            )}
+
             <button className="btn border-none btn-sm bg-gradient-to-r from-ss-primary to-ss-secondary text-black uppercase">
               Register
             </button>
