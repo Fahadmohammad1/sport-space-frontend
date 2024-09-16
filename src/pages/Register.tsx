@@ -1,5 +1,6 @@
 import football from "../assets/football.jpg";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useUserRegisterMutation } from "../redux/api/authApi";
 
 type Inputs = {
   name: string;
@@ -11,6 +12,8 @@ type Inputs = {
 };
 
 const Register = () => {
+  const [userRegister] = useUserRegisterMutation();
+
   const {
     register,
     handleSubmit,
@@ -21,10 +24,12 @@ const Register = () => {
 
   const password = watch("password", "");
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const res = await userRegister({ ...data, role: "user" });
+
     reset();
 
-    console.log(data);
+    console.log(res);
   };
   return (
     <section>
