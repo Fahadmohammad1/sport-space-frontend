@@ -1,5 +1,8 @@
 import football from "../assets/football.jpg";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useUserLoginMutation } from "../redux/api/authApi";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   email: string;
@@ -7,6 +10,9 @@ type Inputs = {
 };
 
 const Login = () => {
+  const [userLogin] = useUserLoginMutation();
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -14,7 +20,15 @@ const Login = () => {
     reset,
   } = useForm<Inputs>();
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const res = await userLogin({ ...data });
+
+    if (res?.data?.data) {
+      toast.success("Login Successfull");
+      navigate("/");
+    } else {
+      toast.error(res?.error?.data?.message && "Login failed");
+    }
     console.log(data);
     reset();
   };
