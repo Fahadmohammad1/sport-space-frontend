@@ -1,7 +1,12 @@
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/routes.tsx";
+import { Toaster } from "react-hot-toast";
+
 function App() {
   return (
     <>
-      <h1 className="bg-red-500">hellooooooooooooo</h1>
+      <RouterProvider router={router} />
+      <Toaster />
     </>
   );
 }

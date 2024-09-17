@@ -1,6 +1,8 @@
 import football from "../assets/football.jpg";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { useUserRegisterMutation } from "../redux/api/authApi";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   name: string;
@@ -22,14 +24,21 @@ const Register = () => {
     reset,
   } = useForm<Inputs>();
 
+  const navigate = useNavigate();
+
   const password = watch("password", "");
 
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const res = await userRegister({ ...data, role: "user" });
 
-    reset();
+    if (res?.data?.data) {
+      toast.success("Registration Successfull");
+      navigate("/");
+    } else {
+      toast.error(res?.error?.data?.message && "User already exist");
+    }
 
-    console.log(res);
+    reset();
   };
   return (
     <section>
