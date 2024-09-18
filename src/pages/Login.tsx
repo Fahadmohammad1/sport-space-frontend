@@ -3,6 +3,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { useUserLoginMutation } from "../redux/api/authApi";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { setToLocalStorage } from "../utils/local-storage";
 
 type Inputs = {
   email: string;
@@ -25,11 +26,12 @@ const Login = () => {
 
     if (res?.data?.data) {
       toast.success("Login Successfull");
+      setToLocalStorage("token", res?.data?.token);
       navigate("/");
     } else {
       toast.error(res?.error?.data?.message && "Login failed");
     }
-    console.log(data);
+
     reset();
   };
   return (
