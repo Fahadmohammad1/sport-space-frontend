@@ -5,6 +5,7 @@ import Facilities from "../pages/Facilities";
 import Register from "../pages/Register";
 import Login from "../pages/Login";
 import DashboardLayout from "../components/layouts/DashboardLayout";
+import MyAccount from "../pages/dashboard/MyAccount";
 
 export const router = createBrowserRouter([
   {
@@ -34,6 +35,11 @@ export const router = createBrowserRouter([
   {
     path: "/dashboard",
     element: <DashboardLayout />,
-    children: [{}],
+    children: [
+      {
+        index: true,
+        element: <MyAccount />,
+      },
+    ],
   },
 ]);
