@@ -6,6 +6,7 @@ import Register from "../pages/Register";
 import Login from "../pages/Login";
 import DashboardLayout from "../components/layouts/DashboardLayout";
 import MyAccount from "../pages/dashboard/MyAccount";
+import MyBookings from "../pages/dashboard/MyBookings";
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
       {
         index: true,
         element: <MyAccount />,
+      },
+      {
+        path: "/my-bookings",
+        element: <MyBookings />,
       },
     ],
   },
