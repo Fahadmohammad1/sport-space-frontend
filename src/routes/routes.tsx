@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
         element: <MyAccount />,
       },
       {
-        path: "/my-bookings",
+        path: "/dashboard/my-bookings",
         element: <MyBookings />,
       },
     ],
