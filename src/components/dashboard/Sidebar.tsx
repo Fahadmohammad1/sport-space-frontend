@@ -4,7 +4,8 @@ const Sidebar = () => {
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-      <div className="drawer-content flex flex-col items-center justify-center">
+
+      <div className="drawer-content flex flex-col">
         <Outlet />
         <label
           htmlFor="my-drawer-2"
@@ -24,7 +25,9 @@ const Sidebar = () => {
             <span className="text-ss-primary">S</span>port
             <span className="text-ss-primary">S</span>pace
           </Link>
+
           {/* Sidebar content here */}
+
           <li className=" text-white text-lg">
             <Link to="/dashboard">
               <svg
