@@ -28,6 +28,21 @@ const MyAccount = () => {
           </svg>
           user934@gmail.com
         </p>
+        <p className="mt-7 border-b inline-block border-b-ss-extra">Profile</p>
+      </div>
+      <div>
+        <hr />
+        <div className="lg:ml-10 mt-5">
+          <p>
+            Phone :{" "}
+            <input
+              type="text"
+              defaultValue="12121212121"
+              className="py-2 px-5 border rounded-full ml-5 w-full max-w-xs"
+              disabled
+            />
+          </p>
+        </div>
       </div>
     </section>
   );

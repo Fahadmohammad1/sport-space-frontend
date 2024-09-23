@@ -21,7 +21,10 @@ const Sidebar = () => {
           className="drawer-overlay"
         ></label>
         <ul className="menu bg-ss-primary text-base-content min-h-full w-72 p-4">
-          <Link to="/" className="btn btn-ghost text-xl bg-white">
+          <Link
+            to="/"
+            className="btn btn-ghost text-xl bg-white hover:bg-slate-200"
+          >
             <span className="text-ss-primary">S</span>port
             <span className="text-ss-primary">S</span>pace
           </Link>
