@@ -32,16 +32,32 @@ const MyAccount = () => {
       </div>
       <div>
         <hr />
-        <div className="lg:ml-10 mt-5">
-          <p>
-            Phone :{" "}
+        <div className="lg:ml-10 mt-5 w-1/2">
+          <p className="flex justify-between items-center">
+            <span>Phone</span>
             <input
               type="text"
               defaultValue="12121212121"
+              className="py-2 px-5 border rounded-full ml-auto w-full max-w-xs"
+              disabled
+            />
+          </p>
+
+          <p className="flex justify-between items-center mt-8">
+            <span>Address</span>
+            <input
+              type="text"
+              defaultValue="Chandgaon, Bahaddarhat, Chattogram, dhaka, bangaladesh"
               className="py-2 px-5 border rounded-full ml-5 w-full max-w-xs"
               disabled
             />
           </p>
+          <button className="btn bg-gradient-to-r from-ss-primary to-ss-secondary text-white mt-8 rounded-full px-10">
+            Update
+          </button>
+          <button className="btn bg-gradient-to-r from-red-600 to-red-400 text-white mt-8 rounded-full px-10 ml-3">
+            Delete Account
+          </button>
         </div>
       </div>
     </section>
