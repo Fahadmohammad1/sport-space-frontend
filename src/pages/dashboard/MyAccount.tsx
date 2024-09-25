@@ -3,7 +3,9 @@ import user from "../../assets/user.png";
 const MyAccount = () => {
   return (
     <section>
-      <div className="bg-gradient-to-r from-ss-secondary to-ss-primary lg:h-36 lg:w-full"></div>
+      <div className="bg-gradient-to-r from-ss-secondary to-ss-primary lg:h-36 lg:w-full flex justify-center items-center">
+        <p className="text-5xl text-white"> Welcome back, Kim jon Un</p>
+      </div>
       <div className="lg:ml-10">
         <img
           className="lg:w-44 lg:-mt-24  rounded-full"
