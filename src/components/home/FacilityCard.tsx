@@ -1,6 +1,6 @@
 const FacilityCard = ({ facility }) => {
   return (
-    <div className="card bg-base-100 lg:w-96 shadow-xl mx-auto">
+    <div className="card bg-base-100 shadow-xl mx-auto border">
       <figure className="px-5 pt-5">
         <img src={facility.image} alt="Shoes" className="rounded-xl" />
       </figure>

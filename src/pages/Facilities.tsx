@@ -1,8 +1,58 @@
+import football from "../assets/football.jpg";
+import FacilityCard from "../components/home/FacilityCard";
+
 const Facilities = () => {
+  const facilities = [
+    {
+      id: "1",
+      name: "",
+      image: football,
+      description: "",
+      pricePerHour: "",
+      location: "",
+      isDeleted: "",
+    },
+    {
+      id: "2",
+      name: "",
+      image: football,
+      description: "",
+      pricePerHour: "",
+      location: "",
+      isDeleted: "",
+    },
+    {
+      id: "3",
+      name: "",
+      image: football,
+      description: "",
+      pricePerHour: "",
+      location: "",
+      isDeleted: "",
+    },
+    {
+      id: "4",
+      name: "",
+      image: football,
+      description: "",
+      pricePerHour: "",
+      location: "",
+      isDeleted: "",
+    },
+    {
+      id: "5",
+      name: "",
+      image: football,
+      description: "",
+      pricePerHour: "",
+      location: "",
+      isDeleted: "",
+    },
+  ];
   return (
-    <section className="h-screen container mx-auto mt-10">
+    <section className="container mx-auto mt-10">
       <div className="grid grid-cols-12">
-        <div className="col-span-2 border shadow-lg p-3">
+        <div className="col-span-2 border shadow-lg p-3 rounded-2xl lg:h-1/4">
           <label className="input input-bordered flex items-center gap-2">
             <input type="text" className="grow" placeholder="Search" />
             <svg
@@ -19,7 +69,13 @@ const Facilities = () => {
             </svg>
           </label>
         </div>
-        <div className="col-span-10 ml-5">all the facilities are here</div>
+        <div className="col-span-10 ml-5">
+          <div className="lg:grid grid-cols-3 gap-5">
+            {facilities.map((facility) => (
+              <FacilityCard key={facility.id} facility={facility} />
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );
