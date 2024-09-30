@@ -1,60 +1,96 @@
+import React, { useEffect, useState } from "react";
 import football from "../assets/football.jpg";
 import FacilityCard from "../components/home/FacilityCard";
+import { TFacility } from "../types/common";
 
 const Facilities = () => {
-  const facilities = [
-    {
-      id: "1",
-      name: "",
-      image: football,
-      description: "",
-      pricePerHour: "",
-      location: "",
-      isDeleted: "",
-    },
-    {
-      id: "2",
-      name: "",
-      image: football,
-      description: "",
-      pricePerHour: "",
-      location: "",
-      isDeleted: "",
-    },
-    {
-      id: "3",
-      name: "",
-      image: football,
-      description: "",
-      pricePerHour: "",
-      location: "",
-      isDeleted: "",
-    },
-    {
-      id: "4",
-      name: "",
-      image: football,
-      description: "",
-      pricePerHour: "",
-      location: "",
-      isDeleted: "",
-    },
-    {
-      id: "5",
-      name: "",
-      image: football,
-      description: "",
-      pricePerHour: "",
-      location: "",
-      isDeleted: "",
-    },
-  ];
+  const [minPrice, setMinPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(1000);
+  const [priceRange, setPriceRange] = useState([0, 1000]);
+  const [searchText, setSearchText] = useState("");
+  const [filteredFacilities, setfilteredFacilities] = useState<TFacility[]>([]);
+
+  console.log(priceRange);
+
+  const handleMinPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMinPrice(Number(e.target.value));
+    setPriceRange([Number(e.target.value), maxPrice]);
+  };
+
+  const handleMaxPriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setMaxPrice(Number(e.target.value));
+    setPriceRange([minPrice, Number(e.target.value)]);
+  };
+
+  useEffect(() => {
+    const facilities = [
+      {
+        id: "1",
+        name: "Football Field",
+        image: football,
+        description: "",
+        pricePerHour: 20,
+        location: "Chittagong",
+        isDeleted: false,
+      },
+      {
+        id: "2",
+        name: "Basketball court",
+        image: football,
+        description: "",
+        pricePerHour: 30,
+        location: "Dhaka",
+        isDeleted: false,
+      },
+      {
+        id: "3",
+        name: "Tennis court",
+        image: football,
+        description: "",
+        pricePerHour: 50,
+        location: "Khulna",
+        isDeleted: false,
+      },
+      {
+        id: "4",
+        name: "Cricket field",
+        image: football,
+        description: "",
+        pricePerHour: 100,
+        location: "Khulna",
+        isDeleted: false,
+      },
+      {
+        id: "5",
+        name: "Badminton field",
+        image: football,
+        description: "",
+        pricePerHour: 150,
+        location: "Barishal",
+        isDeleted: false,
+      },
+    ];
+
+    const data = facilities.filter((facility) => {
+      const regex = new RegExp(searchText, "i");
+      return regex.test(facility.name) || regex.test(facility.location);
+    });
+
+    setfilteredFacilities(data);
+  }, [searchText]);
+
+  console.log(filteredFacilities);
   return (
     <section className="container mx-auto mt-10">
       <div className="grid grid-cols-12">
         <div className="col-span-2 border shadow-lg p-3 rounded-2xl lg:h-1/4">
-          <label className="input input-bordered flex items-center gap-2">
-            <input type="text" className="grow" placeholder="Search" />
+          <label className="input input-bordered flex items-center gap-2 mb-4">
+            <input
+              type="text"
+              onChange={(e) => setSearchText(e.target.value)}
+              className="grow"
+              placeholder="Search"
+            />
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 16 16"
@@ -68,10 +104,34 @@ const Facilities = () => {
               />
             </svg>
           </label>
+
+          <h2 className="text-medium font-bold mb-4">Price Range</h2>
+          <div className="flex justify-between mb-4">
+            <span className="text-sm font-medium">Min : ${minPrice}</span>
+            <span className="text-sm font-medium">Max : ${maxPrice}</span>
+          </div>
+          <div className="flex justify-between">
+            <input
+              type="range"
+              min="0"
+              max="1000"
+              value={minPrice}
+              onChange={handleMinPriceChange}
+              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            />
+            <input
+              type="range"
+              min="0"
+              max="1000"
+              value={maxPrice}
+              onChange={handleMaxPriceChange}
+              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+            />
+          </div>
         </div>
         <div className="col-span-10 ml-5">
           <div className="lg:grid grid-cols-3 gap-5">
-            {facilities.map((facility) => (
+            {filteredFacilities.map((facility) => (
               <FacilityCard key={facility.id} facility={facility} />
             ))}
           </div>
