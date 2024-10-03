@@ -75,15 +75,26 @@ const Facilities = () => {
       const regex = new RegExp(searchText, "i");
       return regex.test(facility.name) || regex.test(facility.location);
     });
-
     setfilteredFacilities(data);
-  }, [searchText]);
 
-  console.log(filteredFacilities);
+    if (minPrice > 1 || maxPrice < 1000) {
+      const filteredData = filteredFacilities.filter((facility) => {
+        if (minPrice > 1) {
+          return facility.pricePerHour > minPrice;
+        }
+        if (maxPrice < 1000) {
+          return facility.pricePerHour < maxPrice;
+        }
+      });
+
+      setfilteredFacilities(filteredData);
+    }
+  }, [searchText, minPrice, maxPrice]);
+
   return (
     <section className="container mx-auto mt-10">
       <div className="grid grid-cols-12">
-        <div className="col-span-2 border shadow-lg p-3 rounded-2xl lg:h-1/4">
+        <div className="col-span-2 border shadow-lg p-3 rounded-2xl h-full">
           <label className="input input-bordered flex items-center gap-2 mb-4">
             <input
               type="text"
